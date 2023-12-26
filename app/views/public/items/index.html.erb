@@ -1,0 +1,17 @@
+<h1>商品一覧(全<%= @items.count%>件)</h1>
+<% @items.each do |item| %>
+<div>
+  <%= link_to item_path(item.id) do %>
+  <%= image_tag item.get_image(200,300) %>
+  <% end %>
+</div>
+<div><%= item.name %></div>
+<div>
+  <% if item.is_active == true %>
+      <p>¥ <%= item.price %></p>
+  <% else %>
+      <p>販売停止中</p>
+  <% end %>
+</div>
+<% end %>
+<div><%= paginate @items %></div>
